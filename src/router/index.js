@@ -19,7 +19,12 @@ const routes = [
     path: '/counter',
     name: 'counter',
     component: () => import(/* webpackChunkName: "counter" */ '../views/CounterView.vue')
-  }
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: () => import(/* webpackChunkName: "counter" */ '../views/UsersView.vue')
+  },
 ]
 
 const router = createRouter({
