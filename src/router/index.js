@@ -23,17 +23,17 @@ const routes = [
   {
     path: '/users',
     name: 'users',
-    component: () => import(/* webpackChunkName: "counter" */ '../views/UsersView.vue')
+    component: () => import(/* webpackChunkName: "users" */ '../views/UsersView.vue')
   },
   {
     path: '/pokemon-search',
     name: 'pokemon-search',
-    component: () => import(/* webpackChunkName: "counter" */ '../views/SearchPokemonView.vue')
+    component: () => import(/* webpackChunkName: "pokemon-search" */ '../views/SearchPokemonView.vue')
   },
   {
-    path: '/pokemon/:id',
-    name: 'pokemon-id',
-    component: () => import(/* webpackChunkName: "counter" */ '../views/PokemonView.vue')
+    path: '/todo',
+    name: 'todo',
+    component: () => import(/* webpackChunkName: "todo" */ '../views/TodoVuexView.vue')
   },
 ]
 
