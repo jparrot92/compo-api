@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { watch } from 'vue'
 import { useRoute } from 'vue-router'
 import usePokemon from '../composables/usePokemon'
 
@@ -23,6 +24,10 @@ export default {
         // console.log(route.params.id)
         const { errorMessage, isLoading, pokemon, searchPokemon } = usePokemon( route.params.id )
 
+        watch(
+            () => route.params.id,
+            () => searchPokemon(route.params.id) 
+        )
         
         return {
             errorMessage,
