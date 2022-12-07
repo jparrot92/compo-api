@@ -1,11 +1,12 @@
 <template>
-    <div class="modal-background fade-in">
+    <div class="modal-background fade-in"
+        @click.self="$emit('on:close')">
         <div class="modal-container">
 
             <slot name="header" />
             <slot name="body" />
             <slot name="footer" />
-            
+
             <!-- <slot/> -->
             <!-- <slot>
                 <div class="center">
@@ -18,6 +19,7 @@
 
 <script>
 export default {
+    emits: ['on:close'],
     setup(props, context){
 
     }
