@@ -7,6 +7,10 @@ const useTodos = () => {
 
     const currentTab = ref('all')  
 
+    const isOpenModal = ref(false)
+
+    const newTodoText  = ref('')
+
     return {
         currentTab,
 
@@ -16,8 +20,16 @@ const useTodos = () => {
 
         getTodosByTab: computed( () => store.getters['getTodosByTab'](currentTab.value)),
 
+        isOpenModal,
+
+        newTodoText,
+
         // Methods
         toggleTodo: ( id ) => store.commit('toggleTodo', id ),
+
+        createTodo: ( text ) => store.commit('createTodo', text ),
+
+        closeModal: () => isOpenModal.value = false,
     }
 }
 

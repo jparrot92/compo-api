@@ -25,6 +25,32 @@
         Completados
     </button>
 
+    <button @click="isOpenModal=true">Crear Todo</button>
+
+    <modal v-if="isOpenModal"
+            @on:close="closeModal">
+
+        <template v-slot:header>
+            <h1>Nueva tarea</h1>
+        </template>
+
+        <template v-slot:body>
+            <form @submit.prevent="createTodo(newTodoText); isOpen=false">
+                <input type="text"
+                    placeholder="Nueva tarea"
+                    v-model="newTodoText">
+                <br>
+                <br>
+                <button type="submit">Crear</button>
+            </form>
+
+        </template>
+
+        <template v-slot:footer>
+            <button @click="closeModal">Salir</button>
+        </template>
+    </modal>
+
     <div>
         <ul>
             <li v-for="todo in getTodosByTab" :key="todo.id"
@@ -39,17 +65,23 @@
 
 <script>
 import useTodos from '@/composables/useTodos'
+import Modal from '@/components/Modal.vue'
 
 export default {
+    components: { Modal },
     setup () {
 
-        const {pending, currentTab, getTodosByTab, toggleTodo} = useTodos()
+        const {pending, currentTab, getTodosByTab, isOpenModal, newTodoText, toggleTodo, createTodo, closeModal} = useTodos()
 
         return {
             pending,
             currentTab,
             getTodosByTab,
+            isOpenModal,
+            newTodoText,
             toggleTodo,
+            createTodo,
+            closeModal
         }
     }
 }
